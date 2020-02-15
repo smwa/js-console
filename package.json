@@ -1,0 +1,23 @@
+{
+  "name": "js-console",
+  "version": "1.0.0",
+  "description": "A frontend library to add a terminal emulator feel",
+  "main": "console.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.smwa.me/smwa/js-console.git"
+  },
+  "keywords": [
+    "js",
+    "frontend",
+    "npm",
+    "console",
+    "terminal",
+    "emulator"
+  ],
+  "author": "Michael Smith <michael.smith.ok@gmail.com>",
+  "license": "MIT"
+}
