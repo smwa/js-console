@@ -1,3 +1,5 @@
+// \0 Runs the command on this line
+// \1 Renders the current line immediately
 function initializeConsole(container, onCarriageReturn) {
     container.classList.add('console-background');
 
@@ -39,7 +41,7 @@ function initializeConsole(container, onCarriageReturn) {
                 onCarriageReturn(line.trim());
             }
         }
-        if (isNewLine(c)) {   
+        if (isNewLine(c) || c === "\1") {
             var lines = consoleElement.innerHTML.split("\n");
             var line = lines[lines.length - 1];
             consoleElement.innerHTML = consoleElement.innerHTML.substr(0, consoleElement.innerHTML.length - line.length) + decodeHTML(line);
