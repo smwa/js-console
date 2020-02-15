@@ -15,9 +15,11 @@
                 "help": (words) => Object.keys(commands).map(function(cmd) {
                     return `<a onclick='writer("`+cmd+`", true)'>`+cmd+`</a>`;
                 } ).join("\t"),
+                'clear': function(words) { document.getElementsByClassName("console")[0].innerHTML = ''; },
             }
-            if (commands[words[0]]) {
-                var result = commands[words[0]](words);
+            var command = words[0].toLowerCase();
+            if (commands[command]) {
+                var result = commands[command](words);
                 if (result) {
                     writer(result + "\n");
                 }

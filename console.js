@@ -30,13 +30,13 @@ function initializeConsole(container, onCarriageReturn) {
         toWrite = toWrite.substr(1, toWrite.length - 1);
         if (c === "\0") {
             var lines = consoleElement.innerHTML.split("\n");
-            var line = lines[lines.length - 1].trim();
+            var line = lines[lines.length - 1];
 
-            consoleElement.innerHTML = consoleElement.innerHTML.substr(0, consoleElement.innerHTML.length - lines[lines.length - 1].length) + decodeHTML(lines[lines.length - 1]);
+            consoleElement.innerHTML = consoleElement.innerHTML.substr(0, consoleElement.innerHTML.length - line.length) + decodeHTML(line);
 
             consoleElement.innerHTML += "\n";
             if (onCarriageReturn) {
-                onCarriageReturn(line);
+                onCarriageReturn(line.trim());
             }
         }
         if (isNewLine(c)) {   
@@ -45,7 +45,7 @@ function initializeConsole(container, onCarriageReturn) {
             consoleElement.innerHTML = consoleElement.innerHTML.substr(0, consoleElement.innerHTML.length - line.length) + decodeHTML(line);
         }
         consoleElement.innerHTML += c;
-    }, 5);
+    }, 4);
 
     input.oninput = function(e) {
         var newCharacter = input.value;
