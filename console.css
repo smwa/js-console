@@ -1,13 +1,12 @@
 pre a {
     cursor: pointer;
     text-decoration: underline;
+    color: inherit;
+    text-shadow: 0 0 1px #C8C8C8;
 }
 
 pre a:hover {
-    text-shadow: 0;
-    color: #aaaaff;
-    transition-duration: 400ms;
-    transition-property: color;
+    color: #ccccff;
 }
 
 .console-background {
@@ -24,6 +23,11 @@ pre a:hover {
     );
 }
 
+.console * {
+    transition-duration: 100ms;
+    transition-property: color, text-shadow;
+}
+
 .console {
     text-shadow: 0 0 3px #C8C8C8;
     font: 1.3rem Inconsolata, monospace;
@@ -31,8 +35,8 @@ pre a:hover {
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
-    transition-duration: 400ms;
-    transition-property: color;
+    letter-spacing: 0.03em;
+    line-height: 1.45em;
 }
 
 .console-input {
