@@ -41,12 +41,17 @@ function initializeConsole(container, onCarriageReturn) {
                 onCarriageReturn(line.trim());
             }
         }
-        if (isNewLine(c) || c === "\1") {
+        else if (isNewLine(c) || c === "\1") {
             var lines = consoleElement.innerHTML.split("\n");
             var line = lines[lines.length - 1];
             consoleElement.innerHTML = consoleElement.innerHTML.substr(0, consoleElement.innerHTML.length - line.length) + decodeHTML(line);
+            if (isNewLine(c)) {
+                consoleElement.innerHTML += c;
+            }
         }
-        consoleElement.innerHTML += c;
+        else {
+            consoleElement.innerHTML += c;
+        }
     }, 4);
 
     input.oninput = function(e) {
