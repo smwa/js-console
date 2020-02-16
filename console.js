@@ -26,7 +26,13 @@ function initializeConsole(container, onCarriageReturn) {
 
     var toWrite = '';
     setInterval(function() {
-        if (toWrite.length > 10 && Math.random() > 0.45) return;
+        if (toWrite.length < 20 && Math.random() > 0.55) return;
+        for (var i = 0; i <= toWrite.length / 700; i++) {
+            writeNextCharacter()
+        }
+    }, 4);
+
+    function writeNextCharacter() {
         if (toWrite.length < 1) return;
         var c = toWrite[0];
         toWrite = toWrite.substr(1, toWrite.length - 1);
@@ -52,7 +58,7 @@ function initializeConsole(container, onCarriageReturn) {
         else {
             consoleElement.innerHTML += c;
         }
-    }, 4);
+    }
 
     input.oninput = function(e) {
         var newCharacter = input.value;
