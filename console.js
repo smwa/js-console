@@ -11,6 +11,7 @@ function initializeConsole(container, onCarriageReturn) {
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1425291
     var input = document.createElement('textarea');
     input.setAttribute("autocapitalize", "none");
+    input.setAttribute("spellcheck", "false");
     input.classList.add('console-input');
     container.appendChild(input);
 
@@ -24,21 +25,29 @@ function initializeConsole(container, onCarriageReturn) {
         return txt.value;
     };
 
+    var offsetHeight = document.body.offsetHeight;
     var toWrite = '';
     setInterval(function() {
-        writeNextCharacter();
-        writeNextCharacter();
-        writeNextCharacter();
-        writeNextCharacter();
-        writeNextCharacter();
-        writeNextCharacter();
-        writeNextCharacter();
-    }, 32);
+        if (document.body.offsetHeight > offsetHeight && (window.innerHeight + window.scrollY) < document.body.offsetHeight) {
+            window.scrollTo({
+                left: 0,
+                top: document.body.scrollHeight,
+                behavior: 'smooth',
+            });
+            offsetHeight = document.body.offsetHeight;
+        }
+        else if (document.body.offsetHeight < offsetHeight) {
+            offsetHeight = document.body.offsetHeight;
+        }
+        for (var i = 0; i < 3; i++) {
+            writeNextCharacter();
+        }
+    }, 15);
 
     function writeNextCharacter() {
         if (toWrite.length < 1) return;
         var c = toWrite[0];
-        toWrite = toWrite.substr(1, toWrite.length - 1);
+        toWrite = toWrite.substr(1);
         if (c === "\0") {
             var lines = consoleElement.innerHTML.split("\n");
             var line = lines[lines.length - 1];
@@ -65,6 +74,7 @@ function initializeConsole(container, onCarriageReturn) {
 
     input.oninput = function(e) {
         var newCharacter = input.value;
+        newCharacter = newCharacter.substr(newCharacter.length - 1);
         if (isNewLine(newCharacter)) {
             toWrite += "\0";
         }
