@@ -1,29 +1,21 @@
-pre a {
+.console a {
     cursor: pointer;
     text-decoration: underline;
     color: inherit;
-    text-shadow: 0 0 1px #C8C8C8;
 }
 
-pre a:hover {
+.console a:hover {
     color: #ccccff;
 }
 
 .console-background {
-    background-color: #080808;
-    padding-left: 4vw;
-    padding-right: 4vw;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    min-height: 96vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0;
 
     background-image: radial-gradient(
-        rgba(0, 150, 0, 0.25), black 120%
+        rgb(6, 44, 6), black 120%
     );
 }
 
@@ -33,7 +25,7 @@ pre a:hover {
 }
 
 .console {
-    text-shadow: 0 0 3px #C8C8C8;
+    text-shadow: 0 0 2px #C8C8C8;
     font: 1.3rem Inconsolata, monospace;
     color: #dddddd;
     word-wrap: break-word;
